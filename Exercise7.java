@@ -13,7 +13,7 @@ public class Exercise7 {
 
 		try {
 	//		stackNoArgs();
-			stackIntArg(1);
+			stackIntArg(1, 1, 1);
 	//		stackLongArg(1L);
 	//		stackStringArg("String");
 		} catch (Throwable t) {
@@ -31,14 +31,13 @@ public class Exercise7 {
 		stackNoArgs();
 	}
 	
-	private void stackIntArg (int arg) {
+	private void stackIntArg (int arg, int arg1, int arg2) {
 		
 		if (depth == 1) {
 			return;
 		}
-		int newArg = arg;
 		depth--;
-		stackIntArg(newArg);
+		stackIntArg(arg + 1, arg1 + 1, arg2 + 1);
 	}
 	
 	private void stackLongArg (long arg) {
