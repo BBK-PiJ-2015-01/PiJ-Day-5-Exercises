@@ -1,60 +1,30 @@
 public class Exercise7 {
-	
-	private final long maxDepth = 1000000;
-	private long depth = maxDepth;
-	private final String exceptionMessageFormat = "Caught exception after %d iterations";
-			
-	public static void main(String[] args) {
-		
-		new Exercise7().exercise7Runner();
-	}
-	
-	private void exercise7Runner() {
 
-		try {
-	//		stackNoArgs();
-			stackIntArg(1, 1, 1);
-	//		stackLongArg(1L);
-	//		stackStringArg("String");
-		} catch (Throwable t) {
-			System.out.println(String.format(exceptionMessageFormat, (maxDepth - depth)));
-			System.out.println(t);
+	private final String messageFormat = "To move %d discs requires %f moves";
+	private final String notEvenMessageFormat = "%d is not a valid number of discs";
+	
+	public static void main(String[] args) {
+		new Exercise7().Exercise7Runner();
+	}
+	
+	private void Exercise7Runner() {
+		
+		for(int i = 2; i <= 58; i+=2) {
+			System.out.println(String.format(messageFormat, i , + calculateMoves(i)));
 		}
 	}
 	
-	private void stackNoArgs () {
+	private double calculateMoves(int discsToMove) {
 		
-		if (depth == 1) {
-			return;
+		if (discsToMove < 0 || discsToMove %2 != 0) {
+			System.out.println(String.format(notEvenMessageFormat, discsToMove));
+			return 0.0;
 		}
-		depth--;
-		stackNoArgs();
+		return calculateMovesRecursive(discsToMove) + 1;
 	}
 	
-	private void stackIntArg (int arg, int arg1, int arg2) {
-		
-		if (depth == 1) {
-			return;
-		}
-		depth--;
-		stackIntArg(arg + 1, arg1 + 1, arg2 + 1);
-	}
+	private double calculateMovesRecursive(int discs) {
 	
-	private void stackLongArg (long arg) {
-		
-		if (depth == 1) {
-			return;
-		}
-		depth--;
-		stackLongArg(arg);
-	}
-	
-	private void stackStringArg (String arg) {
-		
-		if (depth == 1) {
-			return;
-		}
-		depth--;
-		stackStringArg(arg);
+		return discs == 0 ? 0 : Math.pow(2, discs-1) + calculateMovesRecursive(discs -2);
 	}
 }
