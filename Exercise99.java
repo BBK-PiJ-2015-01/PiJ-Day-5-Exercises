@@ -2,7 +2,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class Exercise7 {
+public class Exercise99 {
 
     private boolean[][] board = new boolean[8][8];
     private boolean[][] visited = new boolean[8][8];
@@ -16,10 +16,10 @@ public class Exercise7 {
 
     public static void main(String[] args) {
 
-        new Exercise7().exercise7Runner();
+        new Exercise99().exercise99Runner();
     }
 
-    private void exercise7Runner() {
+    private void exercise99Runner() {
 
         for (int outer = 0; outer < board.length; outer++) {
             for (int inner = 0; inner < board[outer].length; inner++) {
